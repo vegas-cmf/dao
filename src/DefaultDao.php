@@ -12,8 +12,13 @@
 
 namespace Vegas\Db\Dao;
 
+use Exception\DaoNotConfiguredException;
 
-class DefaultRepository implements DaoInterface
+/**
+ * Class DefaultDao
+ * @package Vegas\Db\Dao
+ */
+class DefaultDao implements DaoInterface
 {
     /**
      * @var string|null
@@ -35,6 +40,17 @@ class DefaultRepository implements DaoInterface
     public function getRecordClassname()
     {
         return $this->classname;
+    }
+
+    /**
+     * Checks whether DAO has been configured with proper collection/model classname
+     * @throws DaoNotConfiguredException
+     */
+    protected function ensureIsConfigured()
+    {
+        if (!isset($this->classname) || !class_exists($this->classname)) {
+            throw new DaoNotConfiguredException;
+        }
     }
 
     /**
@@ -75,12 +91,24 @@ class DefaultRepository implements DaoInterface
     }
 
     /**
+     * Shorthand for finding all records
+     * @return mixed
+     */
+    public function findAll()
+    {
+        $this->ensureIsConfigured();
+        $classname = $this->getRecordClassname();
+        return $classname::find();
+    }
+
+    /**
      * Proxy to static find method
      * @param mixed $parameters
      * @return mixed
      */
     public function find($parameters = null)
     {
+        $this->ensureIsConfigured();
         $classname = $this->getRecordClassname();
         return $classname::find($parameters);
     }
@@ -92,6 +120,7 @@ class DefaultRepository implements DaoInterface
      */
     public function findFirst($parameters = null)
     {
+        $this->ensureIsConfigured();
         $classname = $this->getRecordClassname();
         return $classname::findFirst($parameters);
     }
@@ -103,6 +132,7 @@ class DefaultRepository implements DaoInterface
      */
     public function findById($id)
     {
+        $this->ensureIsConfigured();
         $classname = $this->getRecordClassname();
         return $classname::findById($id);
     }
@@ -114,6 +144,7 @@ class DefaultRepository implements DaoInterface
      */
     public function count($parameters = null)
     {
+        $this->ensureIsConfigured();
         $classname = $this->getRecordClassname();
         return $classname::count($parameters);
     }

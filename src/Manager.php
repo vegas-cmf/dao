@@ -79,7 +79,7 @@ class Manager implements InjectionAwareInterface
         if (is_object($name)) {
             return get_class($name);
         }
-        return (string)$name;
+        return ltrim((string)$name, '\\');
     }
 
     /**
@@ -108,7 +108,7 @@ class Manager implements InjectionAwareInterface
         if (class_exists($classname)) {
             return new $classname;
         } else {
-            return new DefaultRepository;
+            return new DefaultDao;
         }
     }
 }

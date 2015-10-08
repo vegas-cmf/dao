@@ -12,7 +12,10 @@
 
 namespace Vegas\Db\Dao;
 
-
+/**
+ * Interface DaoInterface
+ * @package Vegas\Db\Dao
+ */
 interface DaoInterface
 {
     /**

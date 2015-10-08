@@ -62,3 +62,7 @@ $results = $dao->findAll();
 ```
 
 For the full list of available methods please examine `\Vegas\Db\Dao\DefaultDao` class.
+
+By default, DAO classes for specific collections/models should be placed under additional `Dao` suffix and should have the same name.
+e.x. for `\Foo\Models\Bar` collection a `\Foo\Models\Dao\Bar` class should be created.
+Currently there are no additional requirements for the class implementation. 
