@@ -61,4 +61,4 @@ $result = $dao->findById('example_id');
 $results = $dao->findAll();
 ```
 
-For the full list of available methods please examine `\Vegas\Db\Dao\Default` class.
+For the full list of available methods please examine `\Vegas\Db\Dao\DefaultDao` class.
