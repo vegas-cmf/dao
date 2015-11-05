@@ -34,6 +34,15 @@ class Manager implements InjectionAwareInterface
     protected $repositories = [];
 
     /**
+     * Shorthand method for retrieving DAO for scaffolding-aware area.
+     * @return mixed DAO-type
+     */
+    public function getDefault()
+    {
+        return $this->get($this->getDI()->get('scaffolding')->getRecord());
+    }
+
+    /**
      * @param mixed $name a model/collection name or instance
      * @return mixed requested DAO
      */
