@@ -13,9 +13,9 @@
 namespace Vegas\Tests\Stub\Models;
 
 
-use Vegas\Db\Decorator\CollectionAbstract;
+use Vegas\ODM\Collection;
 
-class FakeWithDao extends CollectionAbstract
+class FakeWithDao extends Collection
 {
     public function getSource()
     {

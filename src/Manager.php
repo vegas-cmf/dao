@@ -12,8 +12,8 @@
 
 namespace Vegas\Db\Dao;
 
-use Phalcon\DI\InjectionAwareInterface;
-use Vegas\DI\InjectionAwareTrait;
+use Phalcon\Di\InjectionAwareInterface;
+use Vegas\Di\InjectionAwareTrait;
 
 /**
  * Class Manager
@@ -35,6 +35,7 @@ class Manager implements InjectionAwareInterface
 
     /**
      * Shorthand method for retrieving DAO for scaffolding-aware area.
+     * @todo rewrite scaffolding to Vegas 2.0
      * @return mixed DAO-type
      */
     public function getDefault()

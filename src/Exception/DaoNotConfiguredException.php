@@ -10,15 +10,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Exception;
-
-use Vegas\Db\Exception;
+namespace Vegas\Db\Dao\Exception;
 
 /**
  * Class DaoNotConfiguredException
- * @package Exception
+ * @package Vegas\Db\Dao\Exception
  */
-class DaoNotConfiguredException extends Exception
+class DaoNotConfiguredException extends \Exception
 {
     protected $message = 'Dao is not configured properly.';
 }

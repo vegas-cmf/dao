@@ -1,8 +1,8 @@
 Vegas CMF DAO
 ======================
 
-[![Build Status](https://travis-ci.org/vegas-cmf/dao.png?branch=master)](https://travis-ci.org/vegas-cmf/dao)
-[![Coverage Status](https://coveralls.io/repos/vegas-cmf/dao/badge.png?branch=master)](https://coveralls.io/r/vegas-cmf/dao?branch=master)
+[![Build Status](https://travis-ci.org/vegas-cmf/dao.png?branch=v2.0)](https://travis-ci.org/vegas-cmf/dao)
+[![Coverage Status](https://coveralls.io/repos/vegas-cmf/dao/badge.png?branch=v2.0)](https://coveralls.io/r/vegas-cmf/dao?branch=v2.0)
 [![Latest Stable Version](https://img.shields.io/packagist/v/vegas-cmf/dao.svg)](https://packagist.org/packages/vegas-cmf/dao)
 [![Total Downloads](https://img.shields.io/packagist/dt/vegas-cmf/dao.svg)](https://packagist.org/packages/vegas-cmf/dao)
 

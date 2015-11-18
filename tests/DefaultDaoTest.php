@@ -13,12 +13,12 @@
 namespace Vegas\Tests\Db\Dao;
 
 
-use Phalcon\DI;
+use Phalcon\Di;
 use Vegas\Db\Dao\Manager;
-use Vegas\Test\TestCase;
+use Vegas\Tests\ApplicationTestCase;
 use Vegas\Tests\Stub\Models\FakeWithDao;
 
-class DefaultDaoTest extends TestCase
+class DefaultDaoTest extends ApplicationTestCase
 {
     /**
      * @var Manager
@@ -27,7 +27,9 @@ class DefaultDaoTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        $di = DI::getDefault();
+        parent::setUpBeforeClass();
+
+        $di = Di::getDefault();
         $di->get('db')->execute('DROP TABLE IF EXISTS fake_table ');
         $di->get('db')->execute(
             'CREATE TABLE fake_table(
@@ -44,7 +46,7 @@ class DefaultDaoTest extends TestCase
 
     public static function tearDownAfterClass()
     {
-        $di = DI::getDefault();
+        $di = Di::getDefault();
         $di->get('db')->execute('DROP TABLE IF EXISTS fake_table ');
         $di->get('mongo')->selectCollection('fake_with_dao')->remove([]);
         $di->get('mongo')->selectCollection('fake_without_dao')->remove([]);
@@ -53,6 +55,7 @@ class DefaultDaoTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+
         $this->dao = new Manager;
         $this->dao->setDI($this->di);
     }
