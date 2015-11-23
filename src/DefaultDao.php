@@ -12,7 +12,7 @@
 
 namespace Vegas\Db\Dao;
 
-use Exception\DaoNotConfiguredException;
+use Vegas\Db\Dao\Exception\DaoNotConfiguredException;
 
 /**
  * Class DefaultDao

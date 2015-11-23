@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Exception;
+namespace Vegas\Db\Dao\Exception;
 
 use Vegas\Db\Exception;
 
