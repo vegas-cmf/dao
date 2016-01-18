@@ -13,6 +13,7 @@
 namespace Vegas\Db\Dao;
 
 use Vegas\Db\Dao\Exception\DaoNotConfiguredException;
+use Vegas\Db\Dao\Exception\InvalidDaoMethodException;
 
 /**
  * Class DefaultDao
@@ -147,5 +148,21 @@ class DefaultDao implements DaoInterface
         $this->ensureIsConfigured();
         $classname = $this->getRecordClassname();
         return $classname::count($parameters);
+    }
+
+    /**
+     * Proxy to static aggregate method when available
+     * @param mixed $parameters
+     * @return mixed
+     * @throws InvalidDaoMethodException when aggregation for this adapter is unavailable
+     */
+    public function aggregate($parameters = null)
+    {
+        $this->ensureIsConfigured();
+        $classname = $this->getRecordClassname();
+        if (!method_exists($classname, 'aggregate')) {
+            throw new InvalidDaoMethodException;
+        }
+        return $classname::aggregate($parameters);
     }
 }

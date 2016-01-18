@@ -15,10 +15,10 @@ namespace Vegas\Db\Dao\Exception;
 use Vegas\Db\Exception;
 
 /**
- * Class DaoNotConfiguredException
+ * Class InvalidDaoMethodException
  * @package Vegas\Db\Dao\Exception
  */
-class DaoNotConfiguredException extends Exception
+class InvalidDaoMethodException extends Exception
 {
-    protected $message = 'Dao is not configured properly.';
+    protected $message = 'Dao method does not exist.';
 }
