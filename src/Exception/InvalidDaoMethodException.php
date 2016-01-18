@@ -12,13 +12,11 @@
 
 namespace Vegas\Db\Dao\Exception;
 
-use Vegas\Db\Exception;
-
 /**
  * Class InvalidDaoMethodException
  * @package Vegas\Db\Dao\Exception
  */
-class InvalidDaoMethodException extends Exception
+class InvalidDaoMethodException extends \Exception
 {
     protected $message = 'Dao method does not exist.';
 }
