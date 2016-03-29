@@ -30,14 +30,14 @@
         "php": ">=5.4",
         "ext-phalcon": ">=2.0",
         "phalcon/incubator": ">=2.0",
-        "vegas-cmf/common" : "dev-master",
-        "vegas-cmf/odm": "dev-master"
+        "vegas-cmf/common" : "dev-master"
     },
     "require-dev": {
         "phalcon/devtools": "2.0.8",
         "phpunit/phpunit": "4.0.*",
         "satooshi/php-coveralls": "dev-master",
-        "vegas-cmf/mvc" : "dev-master"
+        "vegas-cmf/mvc" : "dev-master",
+        "vegas-cmf/odm": "dev-master"
     },
     "autoload": {
         "psr-4": {
