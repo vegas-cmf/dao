@@ -3,6 +3,10 @@ language: php
 php:
   - 5.5
 
+services:
+  - mongodb
+  - memcached
+
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS vegas_test;" -uroot
   - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
