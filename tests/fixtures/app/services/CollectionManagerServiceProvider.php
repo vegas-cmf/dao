@@ -12,7 +12,7 @@
 
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Url as UrlResolver;
-use Vegas\DI\ServiceProviderInterface;
+use Vegas\Di\ServiceProviderInterface;
 
 /**
  * Class UrlServiceProvider
@@ -26,9 +26,7 @@ class CollectionManagerServiceProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $di)
     {
-        $di->set(self::SERVICE_NAME, function() use ($di) {
-            return new \Phalcon\Mvc\Collection\Manager();
-        }, true);
+        $di->set(self::SERVICE_NAME, '\Phalcon\Mvc\Collection\Manager', true);
     }
 
     public function getDependencies()

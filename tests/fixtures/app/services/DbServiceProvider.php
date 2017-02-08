@@ -12,7 +12,7 @@
 
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Url as UrlResolver;
-use Vegas\DI\ServiceProviderInterface;
+use Vegas\Di\ServiceProviderInterface;
 
 /**
  * Class UrlServiceProvider
@@ -26,8 +26,8 @@ class DbServiceProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $di)
     {
-        $di->set(self::SERVICE_NAME, function() use ($di) {
-            return new \Phalcon\Db\Adapter\Pdo\Mysql($di->get('config')->db->toArray());
+        $di->set(self::SERVICE_NAME, function() {
+            return new \Phalcon\Db\Adapter\Pdo\Mysql($this->get('config')->db->toArray());
         }, true);
     }
 

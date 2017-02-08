@@ -12,8 +12,8 @@
 
 namespace Vegas\Db\Dao;
 
-use Phalcon\DI\InjectionAwareInterface;
-use Vegas\DI\InjectionAwareTrait;
+use Phalcon\Di\InjectionAwareInterface;
+use Vegas\Di\InjectionAwareTrait;
 
 /**
  * Class Manager
