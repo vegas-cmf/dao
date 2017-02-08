@@ -1,20 +1,42 @@
 language: php
 
 php:
-  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+
+matrix:
+  allow_failures:
+    - php: 7.0
+
+env:
+  global:
+    - MONGO_DB_NAME="vegas_test"
+    - VEGAS_CMF_DAO_MONGO_PORT_27017_TCP_ADDR="localhost"
+    - VEGAS_CMF_DAO_MONGO_PORT_27017_TCP_PORT=27017
+    - VEGAS_CMF_DAO_MYSQL_PORT_3306_TCP_ADDR="localhost"
+    - VEGAS_CMF_DAO_MYSQL_PORT_3306_TCP_PORT=3306
+    - VEGAS_CMF_DAO_MYSQL_ENV_MYSQL_DATABASE="vegas_test"
+    - VEGAS_CMF_DAO_MYSQL_ENV_MYSQL_USER="root"
+    - VEGAS_CMF_DAO_MYSQL_ENV_MYSQL_PASSWORD
+  matrix:
+    - PHALCON_VERSION="3.0.x"
+    - PHALCON_VERSION="v3.0.3"
+    - PHALCON_VERSION="v3.0.2"
+    - PHALCON_VERSION="v3.0.1"
+    - PHALCON_VERSION="v3.0.0"
+
+services:
+  - mongodb
 
 before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS vegas_test;" -uroot
-  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-  - echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
-  - sudo apt-get update
-  - sudo apt-get install mongodb-org-server
+  - printf "\n" | pecl install mongo &> /dev/null
+  - mysql -e "CREATE DATABASE IF NOT EXISTS ${VEGAS_CMF_DAO_MYSQL_ENV_MYSQL_DATABASE};" -u${VEGAS_CMF_DAO_MYSQL_ENV_MYSQL_USER}
 
 before_script:
-  - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git -b phalcon-v1.3.4
-  - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini)
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
+  - ./travis/install-phalcon-extension.sh ${PHALCON_VERSION}
+  - php --ri phalcon
+  - travis_retry composer install --dev --no-interaction
   
 script:
   - mkdir -p build/logs
